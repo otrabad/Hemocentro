@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBM Connect: Roles, Pilares y Acciones</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Opcional: Íconos Font Awesome -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+</head>
+<body>
+    <div class="game-container">
+        <h1><i class="fas fa-project-diagram"></i> PBM Connect: Roles, Pilares y Acciones</h1>
+
+        <div id="score-board">
+            Puntuación: <span id="score">0</span>
+        </div>
+
+        <div id="activity-section">
+            <h2>Actividad Actual:</h2>
+            <p id="activity-display">Cargando actividad...</p>
+        </div>
+
+        <div id="selection-section">
+            <div id="role-buttons-container">
+                <h3>Selecciona el Rol:</h3>
+                <div id="role-buttons">
+                    <!-- Los botones de rol se generarán con JavaScript -->
+                </div>
+            </div>
+            <div id="pillar-buttons-container">
+                <h3>Selecciona el Pilar:</h3>
+                 <div id="pillar-buttons">
+                    <button class="pillar-btn pillar-1" data-pillar="1">
+                        Pilar 1
+                        <span class="pillar-definition">Optimizar Eritrocitos</span>
+                    </button>
+                    <button class="pillar-btn pillar-2" data-pillar="2">
+                        Pilar 2
+                        <span class="pillar-definition">Minimizar Pérdida</span>
+                    </button>
+                    <button class="pillar-btn pillar-3" data-pillar="3">
+                        Pilar 3
+                        <span class="pillar-definition">Optimizar Tolerancia</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="feedback">
+            <!-- Feedback (Correcto/Incorrecto) -->
+        </div>
+
+        <button id="next-button" disabled>Siguiente Actividad</button>
+
+        <div id="final-results" style="display: none;">
+            <h2>¡Juego Terminado!</h2>
+            <p>Tu puntuación final es: <strong id="final-score"></strong></p>
+            <h3>Resumen de Errores:</h3>
+            <ul id="incorrect-list">
+                <!-- Lista de errores -->
+            </ul>
+            <button id="restart-button">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

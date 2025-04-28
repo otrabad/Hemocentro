@@ -1,0 +1,308 @@
+/* --- Estilos Generales --- */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f7f6; /* Un gris muy claro */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinear arriba para juegos largos */
+    min-height: 100vh;
+}
+
+.game-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 900px; /* Ancho máximo para mejor lectura */
+    text-align: center;
+}
+
+h1 {
+    color: #2c3e50; /* Azul oscuro */
+    margin-bottom: 30px;
+    border-bottom: 2px solid #3498db; /* Línea azul debajo */
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #3498db; /* Azul */
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+/* --- Sección de Actividad --- */
+#activity-section {
+    margin-bottom: 30px;
+}
+
+#activity-display {
+    background-color: #eaf2f8; /* Azul muy claro */
+    border: 1px solid #aed6f1; /* Borde azul claro */
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    min-height: 60px; /* Espacio para texto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #283747; /* Azul más oscuro */
+}
+
+/* --- Sección de Selección (Roles y Pilares) --- */
+#selection-section {
+    display: flex;
+    flex-direction: column; /* Apilar roles y pilares por defecto */
+    gap: 30px; /* Espacio entre roles y pilares */
+    margin-bottom: 30px;
+}
+
+/* Contenedores de botones */
+#role-buttons, #pillar-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los botones pasen a la siguiente línea */
+    justify-content: center; /* Centrar los botones */
+    gap: 10px; /* Espacio entre botones */
+}
+
+/* Estilos base para botones de Rol y Pilar */
+.role-btn, .pillar-btn {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-width: 100px; /* Ancho mínimo para consistencia */
+    text-align: center;
+}
+
+.role-btn:hover, .pillar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.role-btn:disabled, .pillar-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: #ccc !important; /* Sobrescribir color de fondo */
+    color: #666 !important; /* Sobrescribir color de texto */
+    transform: none;
+    box-shadow: none;
+}
+
+/* Botones de Pilar */
+.pillar-btn {
+    background-color: #3498db; /* Azul base */
+    color: white;
+    border: 2px solid transparent; /* Espacio para el borde seleccionado */
+}
+
+/* --- Colores Roles (Sanitizados para CSS) --- */
+/* Asegúrate que los nombres de clase coincidan con sanitizeClassName en JS */
+.role-Hematólogos { background-color: #e74c3c; color: white; } /* Rojo */
+.role-Cirujanos { background-color: #9b59b6; color: white; } /* Morado */
+.role-Anestesiólogos { background-color: #1abc9c; color: white; } /* Turquesa */
+.role-Médicos-criticos { background-color: #e67e22; color: white; } /* Naranja */
+.role-Hospitalistas { background-color: #7f8c8d; color: white; } /* Gris */
+.role-Medicina-transfusional { background-color: #34495e; color: white; } /* Azul oscuro/gris */
+.role-Enfermería { background-color: #e84393; color: white; } /* Rosa */
+.role-Farmacéuticos { background-color: #f9ca24; color: #333; } /* Amarillo más vivo */
+.role-Laboratorio { background-color: #bdc3c7; color: #333; } /* Gris claro */
+.role-Perfusionistas { background-color: #5dade2; color: white; } /* Azul claro */
+.role-Tecnico-de-hemoterapia { background-color: #8e44ad; color: white; } /* Morado oscuro (Actualizado) */
+
+/* Estilo para botón seleccionado */
+.role-btn.selected, .pillar-btn.selected {
+    outline: 3px solid #f1c40f; /* Borde amarillo brillante */
+    outline-offset: 2px;
+    box-shadow: 0 0 10px rgba(241, 196, 15, 0.7); /* Sombra amarilla */
+    transform: scale(1.05); /* Ligeramente más grande */
+}
+
+/* --- Feedback --- */
+#feedback {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    min-height: 30px; /* Para que no salte la interfaz */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-correct {
+    background-color: #d4efdf; /* Verde muy claro */
+    color: #145a32; /* Verde oscuro */
+    border: 1px solid #a9dfbf; /* Borde verde */
+}
+
+.feedback-incorrect {
+    background-color: #faded7; /* Rojo muy claro */
+    color: #922b21; /* Rojo oscuro */
+    border: 1px solid #f1948a; /* Borde rojo */
+}
+
+.feedback-partial {
+    background-color: #fef9e7; /* Amarillo muy claro */
+    color: #9a7d0a; /* Amarillo/marrón oscuro */
+    border: 1px solid #f8c471; /* Borde amarillo */
+}
+
+/* Estilos para partes correctas/incorrectas en feedback parcial */
+.feedback-partial span {
+    display: block; /* Poner cada parte en una línea */
+    margin: 3px 0;
+}
+.correct-part {
+    color: #1e8449; /* Verde */
+}
+.incorrect-part {
+    color: #c0392b; /* Rojo */
+}
+
+/* --- Puntuación --- */
+#score-section {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+#score {
+    color: #e67e22; /* Naranja */
+    font-size: 1.5em;
+}
+
+/* --- Botón Siguiente --- */
+#next-button {
+    background-color: #2ecc71; /* Verde */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 30px;
+    transition: background-color 0.2s ease;
+}
+
+#next-button:hover {
+    background-color: #27ae60; /* Verde más oscuro */
+}
+
+#next-button:disabled {
+    background-color: #bdc3c7; /* Gris */
+    cursor: not-allowed;
+}
+
+/* --- Resultados Finales --- */
+#final-results {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #f8f9f9;
+    border: 1px solid #d6dbdf;
+    border-radius: 8px;
+}
+
+#final-results h2 {
+    color: #16a085; /* Verde azulado */
+}
+
+#final-score {
+    font-size: 2em;
+    color: #e67e22; /* Naranja */
+    font-weight: bold;
+}
+
+#incorrect-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left; /* Alinear texto de errores a la izquierda */
+}
+
+#incorrect-list li {
+    background-color: #fff;
+    border: 1px solid #eaecee;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#incorrect-list span {
+    display: block; /* Cada parte en una línea */
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.activity-text {
+    font-weight: bold;
+    color: #566573; /* Gris azulado */
+}
+
+.user-choice {
+    color: #c0392b; /* Rojo */
+}
+
+.correct-choice {
+    color: #27ae60; /* Verde */
+}
+
+/* --- Botón Reiniciar --- */
+#restart-button {
+    background-color: #3498db; /* Azul */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.2s ease;
+}
+
+#restart-button:hover {
+    background-color: #2980b9; /* Azul más oscuro */
+}
+
+/* --- Media Queries (Ejemplo básico para pantallas pequeñas) --- */
+@media (min-width: 768px) {
+    #selection-section {
+        flex-direction: row; /* Roles y pilares lado a lado en pantallas más grandes */
+        align-items: flex-start; /* Alinear arriba */
+        justify-content: space-around; /* Distribuir espacio */
+    }
+
+    #role-buttons, #pillar-buttons {
+        flex-basis: 45%; /* Darles un ancho base para que se distribuyan */
+    }
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .role-btn, .pillar-btn {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    #activity-display {
+        font-size: 1em;
+        padding: 15px;
+    }
+}
